@@ -11,6 +11,6 @@ em formato json.
    - Quantidade de frases que você quer receber
 
 2. Clicando na opção de cadastro você será redirecionado para a tela de cadastro da api, onde comtém as seguintes opções:
-   -2.1 Opção de cadastrar um novo sentimento que não enteja no banco de dados ou colocar um sentimento que já existe no banco de dados para logo
+   - Opção de cadastrar um novo sentimento que não enteja no banco de dados ou colocar um sentimento que já existe no banco de dados para logo
         só cadastrar uma frase
-   -2.2 Opção de cadastar uma nova frase, simplesmente é colocar a frase sem aspas no input colocar frase
+   - Opção de cadastar uma nova frase, simplesmente é colocar a frase sem aspas no input colocar frase
