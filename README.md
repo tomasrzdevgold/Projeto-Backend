@@ -7,8 +7,8 @@ em formato json.
 # Como utilizar a API
 
 1. Primeiro paso entrar no endereço da api, vai ser mostrado um simples formulario onde é possivel pôr:
-   1.Qual tipo de frase motivacional você quer ligada pelo sentimento
-   2.Quantidade de frases que você quer receber
+   - Qual tipo de frase motivacional você quer ligada pelo sentimento
+   - Quantidade de frases que você quer receber
 
 2. Clicando na opção de cadastro você será redirecionado para a tela de cadastro da api, onde comtém as seguintes opções:
    -2.1 Opção de cadastrar um novo sentimento que não enteja no banco de dados ou colocar um sentimento que já existe no banco de dados para logo
