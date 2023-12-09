@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+<style>
+   
+    .formulario-nome-erro{
+        font-size: 12px;
+        margin-bottom: 0;
+        display: none;
+    }
+    .formulario-nome-erro-ativo{
+       display: block;
+    }
+    .formulario-email-erro{
+        font-size: 12px;
+        margin-bottom: 0;
+        display: none;
+    }
+    .formulario-email-erro-ativo{
+        display: block;
+    }
+    .formulario-genero-erro{
+        font-size: 12px;
+        margin-bottom: 0;
+        display: none;
+    }
+    .formulario-genero-erro-ativo{
+        display: block;
+    }
+    .envio{
+        font-size: 12px;
+        margin-bottom: 0;
+        display: none;
+    }
+    .envio-ativo{
+        display: block;
+    }
+    .envio-erro{
+        font-size: 12px;
+        margin-bottom: 0;
+        display: none;
+    }
+    .envio-erro-ativo{
+        display: block;
+    }
+    .enviar{
+        font-size: 12px;
+        margin-bottom: 0;
+        display: none;
+    }
+    .enviar-ativo{
+        display: block;
+    }
+</style>
+
+</head>
+
+<body>
+   
+   
+<section>
+<form id="formulario" action="http://localhost:3030/cadastro" method="post" name="form1" >
+
+    <fieldset>
+    
+    <legend>Formulario de Cadastro</legend>
+    <div id="grupo-nome">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="nome" />
+        <p class="formulario-nome-erro">O nome deve conter duas palavras com mais de uma letra por cada palavra</p>
+        <br> <br>
+    </div>
+
+    <label for="sobrenome">Sobrenome:</label>
+        <input type="text" id="sobrenome" name="sobrenome" />
+<br> <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"/>
+        <p class="formulario-email-erro">O email deve conter @, hotmail gmail etc, .com</p>
+        <br>
+    
+        <p>Você tem alguma descendência alemã:</p>
+        <input type="radio" id="sim" name="descen"  value="S"/>
+        <label for="sim">Sim</label>
+        <input type="radio" id="nao" name="descen"  value="N"/>
+        <label for="nao">Não</label>
+       
+        <br> <br>
+    
+
+    
+   <!--  <button id="boton" type="submit">Enviar</button>--> 
+    
+    <button type="reset">limpar</button>
+<br>
+    <input id="boton" class="enviar" type="submit">
+ 
+   <!-- <p class="envio">Envio com succeso</p> -->
+    <p class="envio-erro">Algum campo não foi preenchido</p>
+
+   
+
+
+    </fieldset>
+    
+    </form>
+
+</section>
+
+
+<br>
+
+<hr>
+<br>
+
+
+
+
+
+
+
+
+
+
+<script> 
+const formulario = document.getElementById('formulario')
+const inputs = document.querySelectorAll('#formulario input')
+const selects = document.getElementById('estados')
+const element = document.getElementById("boton")
+
+const campos = {
+nome: false,
+email: false,
+genero: false
+
+}
+
+
+
+const expressoes = {
+nome : /^[a-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑA-Z]{2,}$/ ,
+email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+}
+
+
+const validarFormulario = (e)=>{ 
+switch (e.target.name) {
+    case "nome" :
+        if(expressoes.nome.test(e.target.value)){
+            document.querySelector('#grupo-nome .formulario-nome-erro').classList.remove('formulario-nome-erro-ativo')
+            campos["nome"] = true
+        }else{
+            document.querySelector('#grupo-nome .formulario-nome-erro').classList.add('formulario-nome-erro-ativo')
+            campos["nome"] = false
+            
+        }
+    break
+    case "email" :
+        if(expressoes.email.test(e.target.value)){
+            document.querySelector('.formulario-email-erro').classList.remove('formulario-email-erro-ativo')
+            campos["email"] = true
+        }else {
+            document.querySelector('.formulario-email-erro').classList.add('formulario-email-erro-ativo')
+            campos["email"] = false
+        }
+    break
+    case "descen":
+    
+        let generoM = document.getElementById("sim")
+        let generoF = document.getElementById("nao")
+
+       
+            if(!generoM || !generoF){
+                campos["genero"] = false
+            } else {
+                campos["genero"] = true
+                
+            }
+    break 
+
+}
+}
+
+
+
+
+inputs.forEach((input)=>{
+input.addEventListener('blur',validarFormulario)
+input.addEventListener('blur',validar)
+
+})
+
+
+function validar () {
+
+    if(campos.nome && campos.email && campos.genero){
+    document.querySelector('.enviar').classList.add('enviar-ativo')
+  
+} else {
+    document.querySelector('.enviar').classList.remove('enviar-ativo')
+
+}
+}
+
+
+
+
+
+formulario.addEventListener('reset', (e) => {
+formulario.reset()
+document.querySelector('.enviar').classList.remove('enviar-ativo')
+
+}) 
+</script>
+   
+
+</body>
+
+</html>
